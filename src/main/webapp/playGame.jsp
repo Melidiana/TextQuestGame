@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,18 +36,6 @@
         }
     </style>
 </head>
-<%--<body>--%>
-<%--<div class="section-container">--%>
-<%--    <h1>Text Quest Game</h1>--%>
-<%--    <p>${message}</p>--%>
-<%--    <form method="post" action="game">--%>
-<%--        <input type="hidden" name="action" value="continue">--%>
-<%--        <c:forEach var="option" items="${requestScope.options}">--%>
-<%--            <input type="submit" name="answer" value="${option}">--%>
-<%--        </c:forEach>--%>
-<%--    </form>--%>
-<%--</div>--%>
-<%--</body>--%>
 <body>
 <div class="section-container">
     <img src="images/greeting.jpg" alt="Greeting Image">
@@ -70,11 +57,17 @@
 
     <% Boolean showImage = (Boolean) request.getAttribute("showImage");
         if (showImage != null && showImage) { %>
-    <img src="images/victory.jpg" alt="Victory Image">
+    <img src="images/victory.jpg" alt="Victory Image" style="width: 500px; height: 300px;>
+    <% } %>
+
+    <% Boolean showImage1 = (Boolean) request.getAttribute("showImage1");
+        if (showImage1 != null && showImage1) { %>
+    <img src="images/loss.jpg" alt="Loss Image" style="width: 500px; height: 300px;>
     <% } %>
 
     <form method="post" action="game">
         <input type="hidden" name="action" value="continue">
+
         <% String[] options = (String[]) request.getAttribute("options");
             if (options != null) {
                 for (String option : options) { %>
